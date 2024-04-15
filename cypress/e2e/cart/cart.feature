@@ -11,6 +11,7 @@ Feature: Shopping Cart on demoblaze.com
     And the user opens a specific product page
     And the user clicks on the Add to cart button
 
+  # ToDo: think about assertion checking the cart is empty before add something to him
   Scenario: Displaying/Removing a product from the cart
     When the user opens the cart
     Then the user should see all added products in the cart

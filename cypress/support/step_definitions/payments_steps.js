@@ -9,14 +9,12 @@ When("the user clicks on the Place Order button", () => {
 });
 
 When("the user enters payment details", () => {
-  paymentPage.typePaymentDetails(
-    paymentsData.paymentDetails.name,
-    paymentsData.paymentDetails.country,
-    paymentsData.paymentDetails.city,
-    paymentsData.paymentDetails.card,
-    paymentsData.paymentDetails.month,
-    paymentsData.paymentDetails.year
-  );
+  paymentPage.typePaymentName(paymentsData.paymentDetails.name);
+  paymentPage.typePaymentCountry(paymentsData.paymentDetails.country);
+  paymentPage.typePaymentCity(paymentsData.paymentDetails.city);
+  paymentPage.typePaymentCard(paymentsData.paymentDetails.card);
+  paymentPage.typePaymentMonth(paymentsData.paymentDetails.month);
+  paymentPage.typePaymentYear(paymentsData.paymentDetails.year);
 });
 
 When("the user clicks on the Purchase button", () => {

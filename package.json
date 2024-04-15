@@ -6,11 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "full-regression-headed-chrome": "cypress run --headed --browser chrome --spec 'cypress/e2e/*.feature'",
-    "full-regression-headless-chrome": "cypress run --browser chrome --spec 'cypress/e2e/*.feature'",
-    "contact-us-tests-headed-chrome": "cypress run --headed --browser chrome --spec 'cypress/e2e/Contact_Us.feature'",
-    "contact-us-headless": "cypress run -e TAGS=\"@contact_us\" && node cucumber-html-report.js",
-    "login-and-smoke-pack": "cypress run -e TAGS=\"@smoke or @login\" && node cucumber-html-report.js",
-    "regression-pack": "cypress run -e TAGS=\"@regression\" && node cucumber-html-report.js",
     "login-tests-headless-chrome": "cypress run --headless --browser chrome --spec 'cypress/e2e/Base/login.feature'",
     "generate-report": "node cucumber-html-report.js"
 

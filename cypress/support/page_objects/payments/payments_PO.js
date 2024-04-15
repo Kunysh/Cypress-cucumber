@@ -20,12 +20,27 @@ class Payments_PO extends Common_PO {
     this.elements.orderButton().click();
   }
 
-  typePaymentDetails(name, country, city, card, month, year) {
+  typePaymentName(name) {
     this.elements.namePaymentTextField().type(name);
+  }
+
+  typePaymentCountry(country) {
     this.elements.countryPaymentTextField().type(country);
+  }
+
+  typePaymentCity(city) {
     this.elements.cityPaymentTextField().type(city);
+  }
+
+  typePaymentCard(card) {
     this.elements.cardPaymentTextField().type(card);
+  }
+
+  typePaymentMonth(month) {
     this.elements.monthPaymentTextField().type(month);
+  }
+
+  typePaymentYear(year) {
     this.elements.yearPaymentTextField().type(year);
   }
 
