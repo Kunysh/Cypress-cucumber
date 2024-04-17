@@ -8,8 +8,6 @@
     "full-regression-headed-chrome": "cypress run --headed --browser chrome --spec 'cypress/e2e/*.feature'",
     "login-tests-headless-chrome": "cypress run --headless --browser chrome --spec 'cypress/e2e/Base/login.feature'",
     "generate-report": "node cucumber-html-report.js"
-
-
   },
   "author": "Pawel Kunysz",
   "license": "ISC",
@@ -19,10 +17,11 @@
     "cypress": "^13.7.2",
     "cypress-xpath": "^2.0.1",
     "multiple-cucumber-html-reporter": "^3.6.2",
-    "ts-loader": "^9.5.1"
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5"
   },
   "cypress-cucumber-preprocessor": {
-    "stepDefinitions": "cypress/support/step_definitions/**/*.js",
+    "stepDefinitions": "cypress/support/step_definitions/**/*.ts",
     "html": {
       "enabled": true,
       "output": "cypress/reports/cucumber-html/cucumber-report.html"
