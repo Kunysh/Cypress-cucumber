@@ -1,16 +1,14 @@
 import { Given, When } from "@badeball/cypress-cucumber-preprocessor";
-import HomePage_PO from "../page_objects/home_page/homePage_PO";
-
-const homePage = new HomePage_PO();
+import { homePagePO } from "../page_objects/home_page/homePage_PO";
 
 Given("a user is on the Demoblaze homepage", () => {
-  homePage.navigateToHomepage();
+  homePagePO.navigateToHomepage();
 });
 
 When("the user navigates to the register page", () => {
-  homePage.clickOnSignInButtonInHomepage();
+  homePagePO.clickOnSignInButtonInHomepage();
 });
 
 When("the user navigates to the login page", () => {
-  homePage.clickOnLogInButtonInHomepage();
+  homePagePO.clickOnLogInButtonInHomepage();
 });

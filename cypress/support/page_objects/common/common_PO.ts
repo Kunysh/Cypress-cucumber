@@ -1,7 +1,7 @@
-class Base_PO {
+class Common_PO {
   waitForElement() {
     cy.wait(2000);
   }
 }
 
-export default Base_PO;
+export const commonPO = new Common_PO();

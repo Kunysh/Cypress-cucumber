@@ -1,20 +1,18 @@
 import { Then, When } from "@badeball/cypress-cucumber-preprocessor";
-import Cart_PO from "../page_objects/cart/cart_PO";
-
-const cartPage = new Cart_PO();
+import { cartPagePO } from "../page_objects/cart/cart_PO";
 
 When("the user opens the cart", () => {
-  cartPage.clickOnCartButton();
+  cartPagePO.clickOnCartButton();
 });
 
 Then("the user should see all added products in the cart", () => {
-  cartPage.elements.deleteButton().should("exist");
+  cartPagePO.deleteButton.should("exist");
 });
 
 When("the user removes a selected product", () => {
-  cartPage.clickOnDeleteButton();
+  cartPagePO.clickOnDeleteButton();
 });
 
 Then("the product should be removed from the cart", () => {
-  cartPage.elements.deleteButton().should("not.exist");
+  cartPagePO.deleteButton.should("not.exist");
 });

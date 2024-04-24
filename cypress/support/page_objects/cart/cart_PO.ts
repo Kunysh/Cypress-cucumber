@@ -1,18 +1,22 @@
-import Common_PO from "../common/common_PO";
+class Cart_PO {
+  _cartButton = '#cartur';
+  _deleteButton = 'a[onclick*="deleteItem"]';
 
-class Cart_PO extends Common_PO {
-  elements = {
-    cartButton: () => cy.get("#cartur"),
-    deleteButton: () => cy.get('a[onclick*="deleteItem"]'),
-  };
+  get cartButton() {
+    return cy.get(this._cartButton);
+  }
+
+  get deleteButton() {
+    return cy.get(this._deleteButton);
+  }
 
   clickOnCartButton() {
-    this.elements.cartButton().click();
+    this.cartButton.click();
   }
 
   clickOnDeleteButton() {
-    this.elements.deleteButton().click();
+    this.deleteButton.click();
   }
 }
 
-export default Cart_PO;
+export const cartPagePO = new Cart_PO();

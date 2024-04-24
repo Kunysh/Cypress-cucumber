@@ -1,29 +1,46 @@
-import HomePage_PO from "../home_page/homePage_PO";
+import { commonPO } from "../common/common_PO";
 
-class Login_PO extends HomePage_PO {
-  elements = {
-    usernameLoginTextField: () => cy.get("#loginusername"),
-    passwordLoginTextField: () => cy.get("#loginpassword"),
-    loginButtonOnLoginPage: () =>
-      cy.get(
-        "#logInModal > .modal-dialog > .modal-content > .modal-footer > .btn-primary"
-      ),
-    loginConfirmation: () => cy.get("#nameofuser"),
-  };
+class Login_PO {
+  _loginModalContainer = "#logInModal";
+  _usernameLoginTextField = "#loginusername";
+  _passwordLoginTextField = "#loginpassword";
+  _loginButtonSelector =
+    "> .modal-dialog > .modal-content > .modal-footer > .btn-primary";
+  _loginConfirmation = "#nameofuser";
+
+  get usernameLoginTextField() {
+    return cy.get(
+      this._loginModalContainer + " " + this._usernameLoginTextField
+    );
+  }
+
+  get passwordLoginTextField() {
+    commonPO.waitForElement();
+    return cy.get(
+      this._loginModalContainer + " " + this._passwordLoginTextField
+    );
+  }
+
+  get loginButtonOnLoginPage() {
+    return cy.get(this._loginModalContainer + " " + this._loginButtonSelector);
+  }
+
+  get loginConfirmation() {
+    return cy.get(this._loginConfirmation);
+  }
 
   typeUsername(username) {
-    this.elements.usernameLoginTextField().type(username, { force: true });
+    this.usernameLoginTextField.type(username, { force: true });
   }
 
   typePassword(password) {
-    super.waitForElement();
-    this.elements.passwordLoginTextField().type(password, { force: true });
+    this.passwordLoginTextField.type(password, { force: true });
   }
 
   clickOnLoginButtonOnLoginPage() {
-    this.elements.loginButtonOnLoginPage().click();
-    super.waitForElement();
+    this.loginButtonOnLoginPage.click();
+    commonPO.waitForElement();
   }
 }
 
-export default Login_PO;
+export const loginPagePO = new Login_PO();

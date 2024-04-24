@@ -1,59 +1,90 @@
-import Common_PO from "../common/common_PO";
+import { commonPO } from "../common/common_PO";
 
-class Payments_PO extends Common_PO {
-  elements = {
-    orderButton: () => cy.get(".col-lg-1 > .btn"),
-    namePaymentTextField: () => cy.get("#name"),
-    countryPaymentTextField: () => cy.get("#country"),
-    cityPaymentTextField: () => cy.get("#city"),
-    cardPaymentTextField: () => cy.get("#card"),
-    monthPaymentTextField: () => cy.get("#month"),
-    yearPaymentTextField: () => cy.get("#year"),
-    purchaseConfirmationButton: () =>
-      cy.get(
-        "#orderModal > .modal-dialog > .modal-content > .modal-footer > .btn-primary"
-      ),
-    purchaseConfirmationText: () => cy.get(".sweet-alert > h2"),
-  };
+
+class Payments_PO {
+  _orderModalContainer = '#orderModal';
+  _orderButtonSelector = '.col-lg-1 > .btn';
+  _namePaymentTextField = '#name';
+  _countryPaymentTextField = '#country';
+  _cityPaymentTextField = '#city';
+  _cardPaymentTextField = '#card';
+  _monthPaymentTextField = '#month';
+  _yearPaymentTextField = '#year';
+  _confirmationButtonSelector = '> .modal-dialog > .modal-content > .modal-footer > .btn-primary';
+  _purchaseConfirmationTextSelector = '.sweet-alert > h2';
+
+  get orderButton() {
+    return cy.get(this._orderButtonSelector);
+  }
+
+  get namePaymentTextField() {
+    return cy.get(this._orderModalContainer +  ' ' + this._namePaymentTextField);
+  }
+
+  get countryPaymentTextField() {
+    return cy.get(this._orderModalContainer +  ' ' + this._countryPaymentTextField);
+  }
+
+  get cityPaymentTextField() {
+    return cy.get(this._orderModalContainer +  ' ' + this._cityPaymentTextField);
+  }
+
+  get cardPaymentTextField() {
+    return cy.get(this._orderModalContainer +  ' ' + this._cardPaymentTextField);
+  }
+
+  get monthPaymentTextField() {
+    return cy.get(this._orderModalContainer +  ' ' + this._monthPaymentTextField);
+  }
+
+  get yearPaymentTextField() {
+    return cy.get(this._orderModalContainer +  ' ' + this._yearPaymentTextField);
+  }
+
+  get purchaseConfirmationButton() {
+    return cy.get(this._orderModalContainer +  ' ' + this._confirmationButtonSelector);
+  }
+
+  get purchaseConfirmationText() {
+    return cy.get(this._purchaseConfirmationTextSelector);
+  }
 
   clickOnOrderButton() {
-    this.elements.orderButton().click();
+    this.orderButton.click();
   }
 
   typePaymentName(name) {
-    this.elements.namePaymentTextField().type(name);
+    this.namePaymentTextField.type(name);
   }
 
   typePaymentCountry(country) {
-    this.elements.countryPaymentTextField().type(country);
+    this.countryPaymentTextField.type(country);
   }
 
   typePaymentCity(city) {
-    this.elements.cityPaymentTextField().type(city);
+    this.cityPaymentTextField.type(city);
   }
 
   typePaymentCard(card) {
-    this.elements.cardPaymentTextField().type(card);
+    this.cardPaymentTextField.type(card);
   }
 
   typePaymentMonth(month) {
-    this.elements.monthPaymentTextField().type(month);
+    this.monthPaymentTextField.type(month);
   }
 
   typePaymentYear(year) {
-    this.elements.yearPaymentTextField().type(year);
+    this.yearPaymentTextField.type(year);
   }
 
   clickOnPurchaseConfirmationButton() {
-    this.elements.purchaseConfirmationButton().click();
-    super.waitForElement();
+    this.purchaseConfirmationButton.click();
+    commonPO.waitForElement(); // Zakładam, że commonPO jest zdefiniowane w projekcie
   }
 
   validatePurchaseConfirmationText(expectedPurchaseConfirmationText) {
-    this.elements
-      .purchaseConfirmationText()
-      .should("contain.text", expectedPurchaseConfirmationText);
+    this.purchaseConfirmationText.should("contain.text", expectedPurchaseConfirmationText);
   }
 }
 
-export default Payments_PO;
+export const paymentsPagePO = new Payments_PO;
