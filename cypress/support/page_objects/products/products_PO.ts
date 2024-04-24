@@ -2,7 +2,7 @@ import { commonPO } from "../common/common_PO";
 
 class Products_PO {
   _categoryName = "a[onclick=\"byCat('notebook')\"]";
-  _addToCart = ".col-sm-12 > .btn";
+  _addToCart = "#tbodyid .btn-success";
   _chosenProduct = `.card-title:contains("%TITLE%")`;
 
   get categoryName() {
@@ -18,16 +18,19 @@ class Products_PO {
   }
 
   fetchProductsList(endpointUrl) {
-    cy.intercept('POST', endpointUrl, (req) => {
+    cy.intercept("POST", endpointUrl, (req) => {
       req.body = {
         cat: "notebook",
       };
-    }).as('getProducts');
+    }).as("getProducts");
   }
-  
+
   getFirstProductTitle() {
-    cy.wait('@getProducts').then((interception) => {
-      cy.writeFile("cypress/fixtures/productsResponse.json", interception.response.body);
+    cy.wait("@getProducts").then((interception) => {
+      cy.writeFile(
+        "cypress/fixtures/productsResponse.json",
+        interception.response.body
+      );
       const firstProductTitle = interception.response.body.Items[0].title;
       this._chosenProduct = `.card-title:contains("${firstProductTitle}")`;
     });
@@ -38,7 +41,6 @@ class Products_PO {
     commonPO.waitForElement();
   }
 
-
   clickOnChosenProduct() {
     this.chosenProduct.click();
     commonPO.waitForElement();
@@ -48,6 +50,6 @@ class Products_PO {
     this.addToCart.click();
     commonPO.waitForElement();
   }
-  }
+}
 
 export const productsPagePO = new Products_PO();

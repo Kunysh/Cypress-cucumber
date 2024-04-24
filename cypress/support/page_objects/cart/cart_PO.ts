@@ -1,5 +1,5 @@
 class Cart_PO {
-  _cartButton = '#cartur';
+  _cartButton = "#cartur";
   _deleteButton = 'a[onclick*="deleteItem"]';
   _productInCart = `#tbodyid td:contains("%TITLE%")`;
 
@@ -16,10 +16,12 @@ class Cart_PO {
   }
 
   getProductInCartSelector() {
-    return cy.readFile("cypress/fixtures/productsResponse.json").then((response) => {
-      const firstProductTitle = response.Items[0].title;
-      return this._productInCart.replace("%TITLE%", firstProductTitle);
-    });
+    return cy
+      .readFile("cypress/fixtures/productsResponse.json")
+      .then((response) => {
+        const firstProductTitle = response.Items[0].title;
+        return this._productInCart.replace("%TITLE%", firstProductTitle);
+      });
   }
 
   clickOnCartButton() {

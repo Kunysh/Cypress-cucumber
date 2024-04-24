@@ -9,8 +9,7 @@ class Payments_PO {
   _cardPaymentTextField = "#card";
   _monthPaymentTextField = "#month";
   _yearPaymentTextField = "#year";
-  _confirmationButtonSelector =
-    "> .modal-dialog > .modal-content > .modal-footer > .btn-primary";
+  _confirmationButtonSelector = ".modal-footer .btn-primary";
   _purchaseConfirmationTextSelector = ".sweet-alert > h2";
 
   get orderButton() {

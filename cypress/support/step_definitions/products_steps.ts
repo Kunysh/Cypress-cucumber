@@ -1,10 +1,9 @@
 import { Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import { productsPagePO } from "../page_objects/products/products_PO";
 import productsData from "../../fixtures/products.json";
-import endpointUrl from "../../fixtures/endpoints.json"
+import endpointUrl from "../../fixtures/endpoints.json";
 
 let stub;
-
 
 When("the user opens the chosen category", () => {
   productsPagePO.fetchProductsList(endpointUrl.byCat);

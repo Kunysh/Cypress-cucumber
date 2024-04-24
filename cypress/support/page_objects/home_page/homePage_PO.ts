@@ -1,8 +1,8 @@
 import baseData from "../../../fixtures/base.json";
 
 class HomePage_PO {
-  _signInButton = '#signin2';
-  _logInButton = '#login2';
+  _signInButton = "#signin2";
+  _logInButton = "#login2";
 
   get signInButtonInHomepage() {
     return cy.get(this._signInButton);

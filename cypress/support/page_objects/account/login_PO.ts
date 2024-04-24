@@ -4,8 +4,7 @@ class Login_PO {
   _loginModalContainer = "#logInModal";
   _usernameLoginTextField = "#loginusername";
   _passwordLoginTextField = "#loginpassword";
-  _loginButtonSelector =
-    "> .modal-dialog > .modal-content > .modal-footer > .btn-primary";
+  _loginButtonSelector = ".modal-footer .btn-primary";
   _loginConfirmation = "#nameofuser";
 
   get usernameLoginTextField() {
