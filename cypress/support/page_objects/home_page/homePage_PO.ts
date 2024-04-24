@@ -1,7 +1,6 @@
 import baseData from "../../../fixtures/base.json";
 
 class HomePage_PO {
-  // Lokalizatory
   _signInButton = '#signin2';
   _logInButton = '#login2';
 

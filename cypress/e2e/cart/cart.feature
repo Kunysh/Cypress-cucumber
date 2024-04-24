@@ -8,6 +8,7 @@ Feature: Shopping Cart on demoblaze.com
     And clicks the login button
     Then the user should be logged in
     And the user opens the chosen category
+    And the products list is fetched and saved through API
     And the user opens a specific product page
     And the user clicks on the Add to cart button
 

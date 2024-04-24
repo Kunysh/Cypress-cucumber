@@ -6,13 +6,13 @@ When("the user opens the cart", () => {
 });
 
 Then("the user should see all added products in the cart", () => {
-  cartPagePO.deleteButton.should("exist");
+  cartPagePO.verifyProductInCart();
 });
 
 When("the user removes a selected product", () => {
-  cartPagePO.clickOnDeleteButton();
+  cartPagePO.clickOnDeleteButtons();
 });
 
 Then("the product should be removed from the cart", () => {
-  cartPagePO.deleteButton.should("not.exist");
+  cartPagePO.deleteButtons.should("not.exist");
 });
