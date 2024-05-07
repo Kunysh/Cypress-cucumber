@@ -3,8 +3,6 @@ import { productsPagePO } from "../page_objects/products/products_PO";
 import productsData from "../../fixtures/products.json";
 import endpointUrl from "../../fixtures/endpoints.json";
 
-let stub;
-
 When("the user opens the chosen category", () => {
   productsPagePO.fetchProductsList(endpointUrl.byCat);
   productsPagePO.clickOnCategoryButton();
@@ -18,12 +16,9 @@ When("the user opens a specific product page", () => {
   productsPagePO.clickOnChosenProduct();
 });
 
-When("the user clicks on the Add to cart button", () => {
-  stub = cy.stub();
-  cy.on("window:alert", stub);
+Then("the user clicks on the Add to cart button and product is added to cart", () => {
   productsPagePO.clickOnAddToCartButton();
-});
-
-Then("the product should be added to the cart", () => {
-  expect(stub).to.have.been.calledWith(productsData.productAddedConfirmation);
+  cy.on("window:alert", (alert) => {
+    expect(alert).to.equal(productsData.productAddedConfirmation);
+  });
 });

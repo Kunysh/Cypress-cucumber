@@ -7,8 +7,7 @@ Feature: Demoblaze Account Management
   Scenario Outline: Unsuccessful registration on Demoblaze
     When the user navigates to the register page
     And the user enters "<username>", "<password>"
-    And clicks the register button
-    Then the user should see a modal with "<expectedAlertText>"
+    Then clicks the register button and the user should see a modal with "<expectedAlertText>"
 
     Examples:
       | username | password     | expectedAlertText        |
